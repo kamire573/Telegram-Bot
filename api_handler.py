@@ -1,12 +1,12 @@
 import requests
-from googletrans import Translator
+from deep_translator import GoogleTranslator
 from config import API_BASE_URL, POST_OUTPUT_CONFIG
 
 class APIHandler:
     """Handles interactions with the external API and customization."""
     
     def __init__(self):
-        self.translator = Translator()
+        self.translator = GoogleTranslator()
 
 async def translate_text(self, text: str, dest: str = "en") -> str:
         """Translate text to the specified language."""
