@@ -21,3 +21,6 @@ Pip3 install python-dotenv
 pip install python-telegram-bot==21.4 requests python-dotenv googletrans==4.0.0-rc1
 
 pip3 install googletrans==4.0.0-rc1 - installed this to wrap the json text and translate the text to English
+pip3 uninstall googletrans
+pip3 install deep-translator
+
