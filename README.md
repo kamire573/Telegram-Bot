@@ -18,4 +18,6 @@ Then I installed the tel bot lib( pip3 install python-telegram-bot —upgrade )
 Installed  python-dotenv which is a lib that loads env variables from .env to your app
 Pip3 install python-dotenv
 
+pip install python-telegram-bot==21.4 requests python-dotenv googletrans==4.0.0-rc1
+
 pip3 install googletrans==4.0.0-rc1 - installed this to wrap the json text and translate the text to English
