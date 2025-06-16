@@ -1,6 +1,6 @@
 import requests
 from deep_translator import GoogleTranslator
-from config import API_BASE_URL, POST_OUTPUT_CONFIG
+from config import API_BASE_URL
 
 class APIHandler:
     """Handles interactions with the external API and customization."""
@@ -8,30 +8,9 @@ class APIHandler:
     def __init__(self):
         self.translator = GoogleTranslator()
 
-async def translate_text(self, text: str, dest: str = "en") -> str:
-        """Translate text to the specified language."""
-        try:
-            translated = self.translator.translate(text, dest=dest)
-            return translated.text
-        except Exception as e:
-            return text  # Fallback to original text if translation fails
-
-async def format_output(self, post: dict) -> str:
-        """Format post data according to the output configuration."""
-        output = ""
-        for field in POST_OUTPUT_CONFIG["fields"]:
-            value = post.get(field["key"], "")
-            if field.get("translate", False):
-                value = await self.translate_text(value)
-            if field["key"] == "id" and POST_OUTPUT_CONFIG.get("link_template"):
-                value = f'<a href="{POST_OUTPUT_CONFIG["link_template"].format(id=value)}">{value}</a>'
-            output += POST_OUTPUT_CONFIG["format_template"].format(
-                label=field["label"], value=value
-            )
-        return output
 
 @staticmethod
-async def get_posts(self,limit: int = 5) -> dict:
+async def get_posts(self,limit: int = 10) -> dict:
         """Fetch a list of posts from the API."""
         try:
             response = requests.get("{API_BASE_URL}/links", params={"_limit": limit})
