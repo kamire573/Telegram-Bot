@@ -36,7 +36,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 async def help(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     await update.message.reply_text(
         "Available commands:\n"
-        "/posts - Fetch the latest 5 posts\n"
+        "/posts - Fetch the latest 10 posts\n"
         "/post <id> - Fetch a post by ID (e.g., /post 1)\n"
         "/start - Show welcome message"
     )
@@ -45,7 +45,7 @@ async def posts(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     """Fetch and display a list of posts with ID, title, & body."""
     result = await APIHandler.get_posts()  
     if result["status"] == "success":
-        response = "Latest links:\n"
+        response = "Latest posts:\n"
         for post in result["data"]:
             response += f"ID: {post['id']} - {post['title']}\n"
         await update.message.reply_text(response)
